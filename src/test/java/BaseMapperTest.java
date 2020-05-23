@@ -29,4 +29,18 @@ public class BaseMapperTest {
                 null);
         System.out.println("total:" + departmentPage.getTotal() + "\ncontent:" + departmentPage.getRecords());
     }
+
+    @Test
+    public void test03(){
+        ApplicationContext context =new ClassPathXmlApplicationContext("spring.xml");
+        DepartmentDao departmentDao = context.getBean("departmentDao",
+                DepartmentDao.class);
+        Department d = new Department();
+//        d.setId(1);
+        d.setDname("研发部");
+
+        List<Department> result = departmentDao.findAllByCondition(d);
+        System.out.println(result);
+
+    }
 }
