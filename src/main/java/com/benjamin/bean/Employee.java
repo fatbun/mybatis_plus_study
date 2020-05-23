@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @TableName("t_employee")
 public class Employee {
 
-    @TableId
+    @TableId(value = "id")
     private Integer id;
     private String name;
     private String phone;

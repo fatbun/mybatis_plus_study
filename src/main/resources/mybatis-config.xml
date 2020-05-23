@@ -6,4 +6,9 @@
     <settings>
         <setting name="logImpl" value="LOG4J"/>
     </settings>
+
+    <plugins>
+        <plugin interceptor="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor">
+        </plugin>
+    </plugins>
 </configuration>

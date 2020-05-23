@@ -13,7 +13,7 @@ import java.util.List;
  */
 @TableName("t_department")
 public class Department {
-    @TableId(type = IdType.NONE)
+    @TableId(value = "id", type = IdType.NONE)
     private Integer id;
     private String dname;
 
