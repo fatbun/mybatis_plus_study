@@ -46,7 +46,13 @@
         <property name="configuration" ref="configuration"/>
         <!--mybatis 全局配置-->
         <property name="globalConfig" ref="globalConfig"/>
-
+        <!--mybatis 插件-->
+        <property name="plugins">
+            <array>
+                <!--分页插件-->
+                <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"/>
+            </array>
+        </property>
     </bean>
     <!--mybatis configuration配置-->
     <bean id="configuration" class="com.baomidou.mybatisplus.core.MybatisConfiguration">
