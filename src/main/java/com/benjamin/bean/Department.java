@@ -13,8 +13,8 @@ import java.util.List;
  * Date: 2020/5/21
  */
 //@TableName("t_department")
-public class Department implements Serializable {
-    @TableId(value = "id", type = IdType.NONE)
+public class Department extends BaseEntity implements Serializable {
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String dname;
 

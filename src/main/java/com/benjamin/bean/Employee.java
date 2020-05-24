@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Date: 2020/5/21
  */
 //@TableName("t_employee")
-public class Employee implements Serializable {
+public class Employee extends BaseEntity implements Serializable {
 
     @TableId(value = "id")
     private Integer id;

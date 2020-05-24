@@ -63,8 +63,17 @@ public class BaseMapperTest {
         System.out.println(departments);
         departments = departmentDao.selectList(null);
         System.out.println(departments);
-
-
     }
 
+    @Test
+    public void test04(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        DepartmentDao departmentDao = context.getBean("departmentDao",
+                DepartmentDao.class);
+
+        Department d = new Department();
+        d.setDname("销售部");
+
+        int insert = departmentDao.insert(d);
+    }
 }
