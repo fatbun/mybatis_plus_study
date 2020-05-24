@@ -44,6 +44,8 @@
 
         <!--mybatis xml配置写在外部-->
         <property name="configuration" ref="configuration"/>
+        <!--mybatis 全局配置-->
+        <property name="globalConfig" ref="globalConfig"/>
 
     </bean>
     <!--mybatis configuration配置-->
@@ -58,5 +60,17 @@
         <property name="cacheEnabled" value="true"/>
     </bean>
 
+    <!--mybatis globalConfig配置-->
+    <bean id="globalConfig" class="com.baomidou.mybatisplus.core.config.GlobalConfig">
+        <!--关闭banner logo-->
+        <property name="banner" value="false"/>
+        <!--引入dbconfig配置-->
+        <property name="dbConfig" ref="dbConfig"/>
+    </bean>
+    <!--mybatis dbConfig配置-->
+    <bean id="dbConfig" class="com.baomidou.mybatisplus.core.config.GlobalConfig$DbConfig">
+        <!--全局数据表名称前缀-->
+        <property name="tablePrefix" value="t_"/>
+    </bean>
 
 </beans>

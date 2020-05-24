@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by Ben Li.
  * Date: 2020/5/21
  */
-@TableName("t_employee")
+//@TableName("t_employee")
 public class Employee implements Serializable {
 
     @TableId(value = "id")

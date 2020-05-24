@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Ben Li.
  * Date: 2020/5/21
  */
-@TableName("t_department")
+//@TableName("t_department")
 public class Department implements Serializable {
     @TableId(value = "id", type = IdType.NONE)
     private Integer id;
