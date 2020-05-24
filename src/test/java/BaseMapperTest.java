@@ -17,6 +17,8 @@ public class BaseMapperTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         DepartmentDao departmentDao = context.getBean("departmentDao",
                 DepartmentDao.class);
+
+        // 分页查询
         Page<Department> departmentPage = departmentDao.selectPage(new Page<Department>(1,
                         1),
                 null);
@@ -71,9 +73,22 @@ public class BaseMapperTest {
         DepartmentDao departmentDao = context.getBean("departmentDao",
                 DepartmentDao.class);
 
+        // BaseEntity下的字段dateCreated，加上注解@TableField(fill = ...)，自动填充
+        // 自动填充处理器：BaseEntityMetaObjectHandler
         Department d = new Department();
         d.setDname("销售部");
 
         int insert = departmentDao.insert(d);
+    }
+
+    @Test
+    public void test05(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        DepartmentDao departmentDao = context.getBean("departmentDao",
+                DepartmentDao.class);
+
+        // BaseEntity下 @TableLogic注解，开启逻辑删除
+        // 逻辑删除仅作用于 mp自带方法删除和查找都会附带逻辑删除功能 (自己写的xml不会)
+        int i = departmentDao.deleteById(3);
     }
 }
