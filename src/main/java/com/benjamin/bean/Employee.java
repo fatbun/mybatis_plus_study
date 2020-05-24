@@ -3,12 +3,14 @@ package com.benjamin.bean;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
+
 /**
  * Created by Ben Li.
  * Date: 2020/5/21
  */
 @TableName("t_employee")
-public class Employee {
+public class Employee implements Serializable {
 
     @TableId(value = "id")
     private Integer id;

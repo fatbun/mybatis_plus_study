@@ -4,6 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.benjamin.dao.DepartmentDao">
+    <!--
+    开启二级缓存
+        eviction：清除策略
+            LRU（默认），FIFO，SOFT，WEAK
+        flushInterval：刷新间隔
+        size：缓存条数
+        readOnly：只读
+    -->
+    <!--<cache eviction="FIFO" flushInterval="10000" size="512" readOnly="true"/>-->
+
     <select id="findAllByCondition" resultType="com.benjamin.bean.Department">
         SELECT * from t_department
         <where>

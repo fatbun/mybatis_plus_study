@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * Date: 2020/5/21
  */
 @TableName("t_department")
-public class Department {
+public class Department implements Serializable {
     @TableId(value = "id", type = IdType.NONE)
     private Integer id;
     private String dname;

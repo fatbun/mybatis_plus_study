@@ -25,6 +25,10 @@
     </bean>
     <!--启动事务管理器注解-->
     <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+    <!--spring的事务模板工具-->
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
 
     <!--集成mybatis plus-->
     <!--配置 MapperScan-->
@@ -33,9 +37,25 @@
     </bean>
     <!--调整 SqlSessionFactory 为 MyBatis-Plus 的 SqlSessionFactory-->
     <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+        <!--引用数据源配置-->
         <property name="dataSource" ref="dataSource"/>
-        <!--<property name="mapperLocations" value="com/benjamin/dao/*.xml"/>-->
-        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--mabatis xml配置-->
+        <!--<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+
+        <!--mybatis xml配置写在外部-->
+        <property name="configuration" ref="configuration"/>
+
+    </bean>
+    <!--mybatis configuration配置-->
+    <bean id="configuration" class="com.baomidou.mybatisplus.core.MybatisConfiguration">
+        <!--开启日志-->
+        <property name="logImpl" value="org.apache.ibatis.logging.log4j.Log4jImpl"/>
+        <!--
+        开启二级缓存，默认开启true
+            1、需要在entity中，实现Serializable接口；
+            2、需要在mapper.xml文件中，增加<cache/>标签，启用二级缓存;
+        -->
+        <property name="cacheEnabled" value="true"/>
     </bean>
 
 
